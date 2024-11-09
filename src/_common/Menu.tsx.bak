@@ -1,0 +1,111 @@
+/*eslint-disable*/
+import { ReactElement, useState } from "react";
+import { IconType } from "react-icons";
+import { FaAddressBook, FaDocker } from "react-icons/fa";
+import { MdNightlight } from "react-icons/md";
+import { LuLogOut } from "react-icons/lu";
+import { Link, useLocation } from "react-router-dom";
+import { FiMenu } from "react-icons/fi";
+
+interface IMenuItem {
+  path: string;
+  name: string;
+  icon: ReactElement<IconType>;
+}
+
+export function MenEu() {
+  const location = useLocation();
+  const path = location.pathname;
+  const [toggleOpen, setToggleOpen] = useState(false);
+
+  const MenuItems: IMenuItem[] = [
+    {
+      path: "/command",
+      name: "command",
+      icon: <FaDocker />,
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      icon: <FaAddressBook />,
+    },
+    {
+      path: "/member",
+      name: "member",
+      icon: <FaAddressBook />,
+    },
+    {
+      path: "/post",
+      name: "post",
+      icon: <FaAddressBook />,
+    },
+    {
+      path: "/comment",
+      name: "comment",
+      icon: <FaAddressBook />,
+    },
+    {
+      path: "/editor",
+      name: "editor",
+      icon: <FaAddressBook />,
+    },
+  ];
+
+  return (
+    <>
+      {/** 사이드 바 */}
+      <div className={`lg:bg-white lg:shadow-md lg:flex lg:flex-col lg:gap-10 lg:justify-between lg:p-5 lg:w-80 sm:bg-red-200 sm:flex sm:flex-col sm:h-[18svh]`}>
+        {/** 사이드 바 타이틀 영역*/}
+        <div className={`lg:flex lg:flex-col lg:justify-center lg:items-center lg:text-gray-700 sm:flex sm:gap-[4rem] sm:h-8`}>
+          <img src={`/logo-d.png`} className={`lg:object-contain lg:w-44 sm:object-contain sm:w-[10rem] sm:h-[17svh]`} />
+          <div className={`lg:pt-3 sm:flex sm:flex-col sm:justify-center sm:items-center sm:gap-[1.5rem] sm:h-[17svh]`}>
+            <p className={`lg:text-2xl lg:tracking-[0.4rem] lg:uppercase lg:font-bold sm:text-3xl sm:tracking-[0.5rem] sm:uppercase sm:font-bold`}>foopery</p>
+            <p className={`lg:text-gray-300 lg:tracking-[0.1rem] sm:text-gray-300 sm:tracking-[0.1rem] sm:text-xl`}>Management App</p>
+          </div>
+          {/** 토글버튼 영역 */}
+          <div className={`lg:hidden bg-blue-700 sm:w-full`}>
+            <button className={`sm:flex sm:w-full sm:h-8  sm:justify-end`} onClick={() => setToggleOpen(!toggleOpen)}>
+              <FiMenu className={`sm:text-3xl bg-red-700`} />
+            </button>
+          </div>
+        </div>
+        {/** 메뉴 영역 */}
+        {/* Error :PC & Mobile Menu Hidden ?? Q. */}
+        {toggleOpen || (
+          <div className={`lg:flex lg:flex-col lg:gap-2 lg:h-full sm:flex sm:flex-col sm:h-screen sm:bg-gray-400 `}>
+            {/** 유저의 프로필영역 */}
+            <div className={`lg:hidden`}>
+              <img src={`/logo-d.png`} className={`sm:w-[5rem]`} />
+            </div>
+            {MenuItems.map((menu, idx) => (
+              <Link
+                to={menu.path}
+                key={idx}
+                className={`lg:py-3 lg:px-6 lg:text-sm lg:hover:bg-gray-50 lg:transition lg:duration-400 lg:cursor-pointer lg:rounded-md lg:flex lg:gap-3 lg:items-center lg:uppercase lg:tracking-[0.06rem]
+                             sm:py-[2.5rem] sm:px-4 sm:text-sm sm:hover:bg-gray-50 sm:transition sm:duration-400 sm:cursor-pointer sm:flex sm:gap-3 sm:items-center sm:uppercase sm:tracking-[0.05rem] sm:bg-gray-100 sm:rounded-md
+                 ${menu.path === path ? "text-blue-500" : "text-gray-700"}`}
+              >
+                {menu.icon}
+                {menu.name}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        <div className={`lg:flex lg:gap-3 lg:justify-center lg:pb-3 sm:hidden`}>
+          <div
+            className={`lg:p-3 lg:bg-gray-50 lg:hover:bg-gray-100 lg:rounded-full lg:shadow lg:cursor-pointer lg:text-gray-700 lg:hover:text-gray-700 lg:transition lg:duration-400`}
+          >
+            <MdNightlight />
+          </div>
+          {/** 로그아웃시 토큰삭제 */}
+          <div
+            className={`lg:p-3 lg:bg-gray-50 lg:hover:bg-gray-100 lg:rounded-full lg:shadow lg:cursor-pointer lg:text-gray-700 lg:hover:text-gray-700 lg:transition lg:duration-400`}
+          >
+            <LuLogOut />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
