@@ -1,46 +1,116 @@
 import Body from "../../../_common/Body";
+import {
+  BlockTypeSelect,
+  BoldItalicUnderlineToggles,
+  codeMirrorPlugin,
+  CodeToggle,
+  CreateLink,
+  headingsPlugin,
+  InsertAdmonition,
+  InsertCodeBlock,
+  InsertFrontmatter,
+  InsertImage,
+  InsertSandpack,
+  InsertTable,
+  InsertThematicBreak,
+  listsPlugin,
+  ListsToggle,
+  markdownShortcutPlugin,
+  MDXEditor,
+  quotePlugin,
+  thematicBreakPlugin,
+  toolbarPlugin,
+  UndoRedo,
+} from "@mdxeditor/editor";
+import "@mdxeditor/editor/style.css";
 
 export default function IssueDetail() {
+  /** Fu */
+
   return (
     <Body title={"제목란"} description={`{작성자}가 이슈를 등록했습니다 {0}일 전 · {0}개의 댓글`}>
       {/** BackGround Area Div */}
-      <div className={`flex justify-between h-full overflow-scroll`}>
+      <div className={`flex justify-between h-full overflow-auto gap-10`}>
         {/** 내용 && 댓글 부모 Div */}
-        <div className={`flex flex-col justify-between h-full w-full`}>
+        <div className={`flex flex-col justify-between h-full w-full `}>
           {/** 내용 Div */}
-          <div className={`text-sm bg-gray-100 border rounded-md px-2`}>asdsadsad 123213 123ss</div>
-          {/** 댓글 Div */}
-          <div className={`bg-gray-100 text-sm h-[30rem] rounded-md px-2 py-2 flex flex-col gap-8`}>
-            {/** 댓글 아이템 Div */}
-            <div className={`bg-gray-200 rounded-md  py-3 px-2 flex justify-between relative border-gray-300`}>
-              {/** 닉네임 && 내용 부모 Div */}
-              {/** 관리자 말풍선 */}
-              <div>
-                <div className={`font-semibold`}>{`닉네임: 처리자`}</div>
-                <div className={`font-semibold`}>{`내용: 해결되었습니다.`}</div>
+          <div className={`text-sm bg-white px-2`}>asdsadsad 123213 123ss</div>
+          {/** 댓글 배경 Div */}
+          <div className={` text-sm px-2 py-2 flex flex-col gap-8`}>
+            {/** 댓글 아이템들 Div */}
+            <div className={` h-auto flex gap-5 `}>
+              {/** 댓글 프로필이미지 Div */}
+              <div className={`flex-none flex-col items-center justify-center pl-1`}>
+                <img className={` w-[2.5rem] aspect-square rounded-full`} src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpSyoumS-w9MICsbUAy3VOMDsecUcgNaqAGA&s"} />
               </div>
-              {/** 등록일 */}
-              <div className={` flex flex-col items-center`}>
-                등록일
-                <p className={`text-gray-300 italic`}>2023-12-31</p>
+              {/**  댓글 이름&&등록일&& 내용 부모 Div*/}
+              <div className={`flex flex-col gap-1 flex-grow `}>
+                {/** 댓글 이름 && 등록일 Div*/}
+                <div className={`flex gap-5 `}>
+                  <p className={`text-[#6b7076] font-semibold`}>Jone Wick</p>
+                  <p className={`text-[#6b7076] font-semibold`}>3 days ago</p>
+                </div>
+                {/** 댓글 내용 Div */}
+                <div className={` w-[100vh] break-words text-gray-800 `}>
+                  3asdasdasdasd3asdasdasdasd3asdasdasdasd3ascssdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3sdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdasasdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasda3asdasdasdasd3asdasdasdasdsdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd
+                </div>
               </div>
-              <div className="absolute right-[-1.5px] bottom-[-15px] w-0 h-0 border-l-[20px] border-l-transparent border-r-[15px] border-r-transparent border-t-[20px] border-gray-200"></div>
             </div>
-            {/** 일반 유저 말풍선 */}
-            <div className={`bg-white rounded-md  py-3 px-2 flex justify-between relative border-gray-300`}>
-              {/** 닉네임 && 내용 부모 Div */}
-              <div>
-                <div className={`font-semibold`}>{`닉네임: 요청자`}</div>
-                <div className={`font-semibold`}>{`내용: 감사합니다.`}</div>
+            {/*  2번째 댓글 */}
+            {/** 댓글 아이템들 Div */}
+            <div className={` h-auto flex gap-5 `}>
+              {/** 댓글 프로필이미지 Div */}
+              <div className={`flex-none flex-col items-center justify-center pl-1`}>
+                <img className={` w-[2.5rem] aspect-square rounded-full`} src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpSyoumS-w9MICsbUAy3VOMDsecUcgNaqAGA&s"} />
               </div>
-              {/** 등록일 */}
-              <div className={` flex flex-col items-center`}>
-                등록일
-                <p className={`text-gray-300 italic`}>2023-12-31</p>
+              {/**  댓글 이름&&등록일&& 내용 부모 Div*/}
+              <div className={`flex flex-col gap-1 flex-grow `}>
+                {/** 댓글 이름 && 등록일 Div*/}
+                <div className={`flex gap-5 `}>
+                  <p className={`text-[#6b7076] font-semibold`}>Jone Wick</p>
+                  <p className={`text-[#6b7076] font-semibold`}>3 days ago</p>
+                </div>
+                {/** 댓글 내용 Div */}
+                <div className={` w-[100vh] break-words text-gray-800 `}>
+                  3asdasdasdasd3asdasdasdasd3asdasdasdasd3ascssdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3sdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdasasdasdasdasd3asdasdasdasd3asdasdassdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasda3asdasdasdasd3asdasdasdasdsdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd3asdasdasdasd
+                </div>
               </div>
-              {/** 일반 유저 말풍선 */}
-              <div className="absolute  left-[-1.5px] bottom-[-15px] w-2 h-2 border-l-[20px] border-l-transparent border-r-[15px] border-r-transparent border-t-[20px] border-white"></div>
             </div>
+            <MDXEditor
+              markdown={""}
+              plugins={[
+                headingsPlugin(),
+                markdownShortcutPlugin(),
+                listsPlugin(),
+                quotePlugin(),
+                thematicBreakPlugin(),
+                codeMirrorPlugin({ codeBlockLanguages: { js: "JavaScript", css: "CSS" } }),
+                toolbarPlugin({
+                  toolbarClassName: "my-classname",
+                  toolbarContents: () => (
+                    <>
+                      {" "}
+                      <UndoRedo />
+                      <BoldItalicUnderlineToggles />
+                      <BlockTypeSelect />
+                      {/*<ChangeAdmonitionType />*/}
+                      {/*<ChangeCodeMirrorLanguage />*/}
+                      {/*<ShowSandpackInfo />*/}
+                      <CodeToggle />
+                      <CreateLink />
+                      <InsertAdmonition />
+                      <InsertCodeBlock />
+                      <InsertFrontmatter />
+                      <InsertImage />
+                      <InsertSandpack />
+                      <InsertTable />
+                      <InsertThematicBreak />
+                      <ListsToggle />
+                    </>
+                  ),
+                }),
+              ]}
+            />
           </div>
         </div>
         {/** 상태창 Div */}
