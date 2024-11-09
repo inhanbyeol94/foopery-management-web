@@ -1,32 +1,8 @@
 import Body from "../../../_common/Body";
-import {
-  BlockTypeSelect,
-  BoldItalicUnderlineToggles,
-  codeMirrorPlugin,
-  CodeToggle,
-  CreateLink,
-  headingsPlugin,
-  InsertAdmonition,
-  InsertCodeBlock,
-  InsertFrontmatter,
-  InsertImage,
-  InsertSandpack,
-  InsertTable,
-  InsertThematicBreak,
-  listsPlugin,
-  ListsToggle,
-  markdownShortcutPlugin,
-  MDXEditor,
-  quotePlugin,
-  thematicBreakPlugin,
-  toolbarPlugin,
-  UndoRedo,
-} from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
+import Editor from "../../../_common/Editor";
 
 export default function IssueDetail() {
-  /** Fu */
-
   return (
     <Body title={"제목란"} description={`{작성자}가 이슈를 등록했습니다 {0}일 전 · {0}개의 댓글`}>
       {/** BackGround Area Div */}
@@ -76,41 +52,8 @@ export default function IssueDetail() {
                 </div>
               </div>
             </div>
-            <MDXEditor
-              markdown={""}
-              plugins={[
-                headingsPlugin(),
-                markdownShortcutPlugin(),
-                listsPlugin(),
-                quotePlugin(),
-                thematicBreakPlugin(),
-                codeMirrorPlugin({ codeBlockLanguages: { js: "JavaScript", css: "CSS" } }),
-                toolbarPlugin({
-                  toolbarClassName: "my-classname",
-                  toolbarContents: () => (
-                    <>
-                      {" "}
-                      <UndoRedo />
-                      <BoldItalicUnderlineToggles />
-                      <BlockTypeSelect />
-                      {/*<ChangeAdmonitionType />*/}
-                      {/*<ChangeCodeMirrorLanguage />*/}
-                      {/*<ShowSandpackInfo />*/}
-                      <CodeToggle />
-                      <CreateLink />
-                      <InsertAdmonition />
-                      <InsertCodeBlock />
-                      <InsertFrontmatter />
-                      <InsertImage />
-                      <InsertSandpack />
-                      <InsertTable />
-                      <InsertThematicBreak />
-                      <ListsToggle />
-                    </>
-                  ),
-                }),
-              ]}
-            />
+            {/* MDX Editor */}
+            <Editor />
           </div>
         </div>
         {/** 상태창 Div */}
