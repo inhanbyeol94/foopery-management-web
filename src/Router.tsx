@@ -3,13 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Auth from "./components/auth/Auth";
 import MainDashBoard from "./components/main_dashBoard/DashBoard";
 import Container from "./components/container/Container";
-import Admin from "./components/Admin";
+import Admin from "./components/admin/Admin";
 import Comment from "./components/Comment";
 import Editor from "./components/Editor";
 import Member from "./components/Member";
 import ContainerDetail from "./components/container/detail/ContainerDetail";
 import Issue from "./components/issue/Issue";
 import IssueDetail from "./components/issue/detail/IssueDetail";
+import CreateAdmin from "./components/admin/create/CreateAdmin";
 
 export default function Router() {
   const routers: { path: string; element: React.ReactNode; key: string }[] = [
@@ -62,6 +63,11 @@ export default function Router() {
       path: "/issue/:id",
       element: <IssueDetail />,
       key: "issue-detail",
+    },
+    {
+      path: "/admin/management/create",
+      element: <CreateAdmin />,
+      key: "/admin/management/create",
     },
   ];
   return (
